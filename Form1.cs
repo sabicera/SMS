@@ -1,69 +1,314 @@
+О╩©using SMS.Properties;
+
 namespace SMS
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private List<DateTime> cyprusHolidays = new List<DateTime>();
+        string text1 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н÷ н∙н⌡н∙н⌠н╖н÷нё н╓н÷н╔ н═н║н÷н≥н÷н²н╓н÷нё н÷н⌡н÷н н⌡н≈н║н╘н≤н≈н н∙. н°н═н÷н║н∙н≥н╓н∙ н²н▒ н═н∙н║н▒нён∙н╓н∙ н²н▒ н╓н÷ н═н▒н║н▒н⌡н▒н▓н∙н╓н∙.";
+        string text2 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н≈ н∙н═н≥нён н∙н╔н≈ н╓н÷н╔ н═н║н÷н≥н÷н²н╓н÷нё н÷н⌡н÷н н⌡н≈н║н╘н≤н≈н н∙. н°н═н÷н║н∙н≥н╓н∙ н²н▒ н═н∙н║н▒нён∙н╓н∙ н²н▒ н╓н÷ н═н▒н║н▒н⌡н▒н▓н∙н╓н∙.";
+        string text3 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н≈ н▒н²н╓н≥н н▒н╓н▒нён╓н▒нён≈ н╓н÷н╔ н═н║н÷н≥н÷н²н╓н÷нё н÷н⌡н÷н н⌡н≈н║н╘н≤н≈н н∙. н°н═н÷н║н∙н≥н╓н∙ н²н▒ н═н∙н║н▒нён∙н╓н∙ н²н▒ н╓н÷ н═н▒н║н▒н⌡н▒н▓н∙н╓н∙.";
+        string text4 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н═н▒н║н▒н н▒н⌡н╘ н∙н═н≥н н÷н≥н²н╘н²н≈нён╓н∙ н▒н°н∙нён▒ н°н▒н√н≥ н°н▒нё.";
+        string text5 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н╓н÷ н═н║н÷н≥н÷н² нён▒нё н∙н≥н²н▒н≥ н═н║н÷н▓н⌡HMAн╓н≥н н÷. н∙н╖н∙н╓н∙  н═н≥нён╓н╘нён≈ н∙н╔н║н╘. н⌠н≥н▒ н²н▒ н═н▒н║н∙н╓н∙ н н▒н╓н≥ н▒н⌡н⌡н÷.";
+        string text6 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н∙н╖н∙н╓н∙ н═н≥нён╓н╘нён≈  н∙н╔н║н╘. н⌠н≥н▒ н²н▒ н═н▒н║н∙н╓н∙ н н▒н╓н≥ н▒н⌡н⌡н÷.";
+        string text7 = "н н▒н╓н▒нён╓н≈н°н▒ н⌡н∙н°н∙нён÷н╔. н╓н∙н╖н²н≥н н÷ н╓н°н≈н°н▒. н╓н÷ н═н║н÷н≥н÷н² нён▒нё н═н║н÷н╘н≤н∙н≥н╓н▒н≥ нён╓н≈н² н▒н²н╓н≥н═н║н÷нён╘н═н∙н≥н▒ н⌠н≥н▒ н∙н⌡н∙н⌠н╖н÷.";
+        private void AddHolidays(int year)
+        {
+            //нёо└н╠н╦н╣о│н╜о┌ н∙н©о│о└н╜о┌
+            cyprusHolidays.Add(new DateTime(year, 1, 1)); // н═о│о┴о└н©о┤о│н©н╫н╞н╠
+            cyprusHolidays.Add(new DateTime(year, 1, 6)); // н≤н╣н©о├н╛н╫н╣н╧н╠
+            cyprusHolidays.Add(new DateTime(year, 3, 25)); // 25н╥ н°н╠о│о└н╞н©о┘
+            cyprusHolidays.Add(new DateTime(year, 4, 1)); // н▒н╫н╣н╬н╠о│о└н╥о┐н╞н╠ о└н╥о┌ н о█о─о│н©о┘
+            cyprusHolidays.Add(new DateTime(year, 5, 1)); // н∙о│нЁн╠о└н╧н╨н╝ н═о│о┴о└н©н╪н╠о┼н╠
+            cyprusHolidays.Add(new DateTime(year, 8, 15)); // н н©н╞н╪н╥о┐н╥ о└н╥о┌ н≤н╣н©о└о▄н╨н©о┘
+            cyprusHolidays.Add(new DateTime(year, 10, 1)); // н≈н╪н╜о│н╠ н▒н╫н╣н╬н╠о│о└н╥о┐н╞н╠о┌ о└н╥о┌ н о█о─о│н©о┘
+            cyprusHolidays.Add(new DateTime(year, 10, 28)); // н≈н╪н╜о│н╠ о└н©о┘ н▄о┤н╧
+            cyprusHolidays.Add(new DateTime(year, 12, 25)); // н╖о│н╧о┐о└н©о█нЁн╣н╫н╫н╠
+
+            //н н╧н╫н╥о└н╜о┌ н∙н©о│о└н╜о┌
+            cyprusHolidays.Add(new DateTime(2022, 12, 26)); // н╖о│н╧о┐о└н©о█нЁн╣н╫н╫н╠ 2023
+            cyprusHolidays.Add(new DateTime(2023, 1, 2)); // н═о│о┴о└н©о┤о│н©н╫н╞н╠ 2023
+            cyprusHolidays.Add(new DateTime(2023, 2, 27)); // н н╠н╦н╠о│н╛ н■н╣о┘о└н╜о│н╠ 2023
+
+            DateTime holiday1 = new DateTime(year, 1, 1);
+            DateTime holiday2 = new DateTime(year, 1, 6);
+            DateTime holiday21 = new DateTime(year, 2, 27);
+            DateTime holiday3 = new DateTime(year, 3, 25);
+            DateTime holiday4 = new DateTime(year, 4, 1);
+            DateTime holiday5 = new DateTime(year, 5, 1);
+            DateTime holiday6 = new DateTime(year, 8, 15);
+            DateTime holiday7 = new DateTime(year, 10, 28);
+            DateTime holiday8 = new DateTime(year, 12, 25);
+
+            if (DateTime.Now.Date <= holiday1)
+            {
+                HolidayLabel.Text = "н═о│о┴о└н©о┤о│н©н╫н╞н╠ - " + holiday1.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday2)
+            {
+                HolidayLabel.Text = "н≤н╣н©о├н╛н╫н╣н╧н╠ - " + holiday2.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday21)
+            {
+                HolidayLabel.Text = "н н╠н╦н╠о│н╛ н■н╣о┘о└н╜о│н╠ - " + holiday21.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday3)
+            {
+                HolidayLabel.Text = "25н╥ н°н╠о│о└н╞н©о┘ - " + holiday3.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday4)
+            {
+                HolidayLabel.Text = "н▒н╫н╣н╬н╠о│о└н╥о┐н╞н╠ о└н╥о┌ н о█о─о│н©о┘ - " + holiday4.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday5)
+            {
+                HolidayLabel.Text = "н∙о│нЁн╠о└н╧н╨н╝ н═о│о┴о└н©н╪н╠о┼н╠ - " + holiday5.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday6)
+            {
+                HolidayLabel.Text = "н н©н╞н╪н╥о┐н╥ о└н╥о┌ н≤н╣н©о└о▄н╨н©о┘ - " + holiday6.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday7)
+            {
+                HolidayLabel.Text = "н≈н╪н╜о│н╠ о└н©о┘ н▄о┤н╧ - " + holiday7.ToString("dddd d MMMM");
+            }
+            else if (DateTime.Now.Date <= holiday8)
+            {
+                HolidayLabel.Text = "н╖о│н╧о┐о└н©о█нЁн╣н╫н╫н╠ - " + holiday8.ToString("dddd d MMMM");
+            }
+        }
+        public Form1(string selectedUser)
         {
             InitializeComponent();
         }
+        public Form1()
+        {
+            InitializeComponent();
+            DateTimePicker.ValueChanged += new EventHandler(dateTimePicker1_ValueChanged);
+            AddHolidays(DateTime.Now.Year);
+            UserComboBox.Text = Settings.Default.SelectedValue;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CurrentDateLabel.Text = DateTime.Now.ToLongDateString();
+            List<int> values = new List<int> { 2, 3, 5, 7, 10 };
+            WarrantyComboBox.DataSource = values;
+        }
+        private void UserComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.Default.SelectedValue = UserComboBox.Text;
+            Settings.Default.Save();
+        }
+        //Calendar Tab//
+        private void WarrantyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateRemainingDays();
+        }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateRemainingDays();
+        }
+        private void CalculateRemainingDays()
+        {
+            {
+                if (DateTimePicker.Value > DateTime.Now)
+                {
+                    OrderDateLabel.Text = "н≈н╪/н╫н╞н╠ н═н╠о│н╠нЁнЁн╣н╩н╞н╠о┌ :";
+                    return;
+                }
+                TimeSpan countworkingdays = DateTime.Now - DateTimePicker.Value;
+                int workingDays = Enumerable.Range(0, (int)countworkingdays.TotalDays)
+                .Select(i => DateTimePicker.Value.AddDays(i))
+                .Count(d => (d.DayOfWeek != DayOfWeek.Saturday && d.DayOfWeek != DayOfWeek.Sunday) && !cyprusHolidays.Contains(d.Date));
 
-        string text1 = "йатастгла келесоу. тевмийо тлгла. о екецвос тоу пяоиомтос окойкгяыхгйе. лпояеите ма пеяасете ма то паяакабете.";
-        string text2 = "йатастгла келесоу. тевмийо тлгла. г еписйеуг тоу пяоиомтос окойкгяыхгйе. лпояеите ма пеяасете ма то паяакабете.";
-        string text3 = "йатастгла келесоу. тевмийо тлгла. г амтийатастасг тоу пяоиомтос окойкгяыхгйе. лпояеите ма пеяасете ма то паяакабете.";
-        string text4 = "йатастгла келесоу. тевмийо тлгла. паяайакы епийоимымгсте алеса лафи лас.";
-        string text5 = "йатастгла келесоу. тевмийо тлгла. то пяоиом сас еимаи пяобкHMAтийо. евете пистысг ─. циа ма паяете йати акко.";
-        string text6 = "йатастгла келесоу. тевмийо тлгла. евете пистысг ─. циа ма паяете йати акко.";
-        string text7 = "йатастгла келесоу. тевмийо тлгла. то пяоиом сас пяоыхеитаи стгм амтипяосыпеиа циа екецво.";
+                DaysPassedLabel.Text = $"{workingDays} н╣о│нЁн╛о┐н╧н╪н╣о┌ н╥н╪н╜о│н╣о┌.";
 
-        private void button1_Click(object sender, EventArgs e)
+                if (workingDays <= 0)
+                {
+                    DaysPassedLabel.ForeColor = Color.Black;
+                    DaysPassedLabel.Font = new Font(DaysPassedLabel.Font, FontStyle.Regular);
+                }
+                else if (workingDays >= 3 && workingDays < 15)
+                {
+                    DaysPassedLabel.ForeColor = Color.MediumBlue;
+                    DaysPassedLabel.Font = new Font(DaysPassedLabel.Font, FontStyle.Regular);
+                }
+                else if (workingDays > 15)
+                {
+                    DaysPassedLabel.ForeColor = Color.Red;
+                    DaysPassedLabel.Font = new Font(DaysPassedLabel.Font, FontStyle.Bold);
+                }
+            }
+
+            // check if the selected year is different from the current year
+            if (DateTimePicker.Value.Year != DateTime.Now.Year)
+            {
+                // clear the previous year holidays
+                //cyprusHolidays.Clear();
+                // add the new year holidays
+                AddHolidays(DateTimePicker.Value.Year);
+            }
+
+            //н■н╧н╨н╠н╞о┴н╪н╠ н∙о─н╧о┐о└о│н©о├н╝о┌//
+            TimeSpan doadays = DateTime.Now - DateTimePicker.Value;
+
+            if (doadays.Days <= 7)
+            {
+                DOALabel.Text = "DOA";
+                DOALabel.ForeColor = Color.Green;
+                DOALabel.Font = new Font(DOALabel.Font, FontStyle.Bold);
+                ReturnLabel.Text = "Online Return";
+                ReturnLabel.ForeColor = Color.Green;
+                ReturnLabel.Font = new Font(ReturnLabel.Font, FontStyle.Bold);
+            }
+            else if (doadays.Days >= 8 && doadays.Days < 15)
+            {
+                DOALabel.Text = "DOA expired";
+                DOALabel.ForeColor = Color.Red;
+                DOALabel.Font = new Font(DOALabel.Font, FontStyle.Bold);
+                ReturnLabel.Text = "Online Return";
+                ReturnLabel.ForeColor = Color.Green;
+                ReturnLabel.Font = new Font(ReturnLabel.Font, FontStyle.Bold);
+            }
+            else if (doadays.Days > 15)
+            {
+                DOALabel.Text = "DOA expired";
+                DOALabel.ForeColor = Color.Red;
+                DOALabel.Font = new Font(DOALabel.Font, FontStyle.Bold);
+                ReturnLabel.Text = "NO Return !!";
+                ReturnLabel.ForeColor = Color.Red;
+                ReturnLabel.Font = new Font(ReturnLabel.Font, FontStyle.Bold);
+            }
+
+            //н≈н╪н╜о│н╣о┌ н∙нЁнЁо█н╥о┐н╥о┌//
+            int minusYears = int.Parse(WarrantyComboBox.Text);
+            DateTime pastDate = DateTime.Now.AddYears(-minusYears);
+            DateTime givenDate = DateTimePicker.Value.Date;
+            TimeSpan difference1 = givenDate - pastDate;
+            int days = (int)difference1.Days;
+
+            if (days >= 0)
+            {
+                WarrantyDays.Text = "н≈ н╣нЁнЁо█н╥о┐н╥ н╧о┐о┤о█н╣н╧ нЁн╧н╠ н╠н╨о▄н╪н╠ " + days + " н╥н╪н╜о│н╣о┌";
+                WarrantyDays.ForeColor = Color.Green;
+                WarrantyDays.Font = new Font(TodayLabel.Font, FontStyle.Regular);
+            }
+
+            else
+            {
+                WarrantyDays.Text = "н∙н╨о└о▄о┌ н╣нЁнЁо█н╥о┐н╥о┌ н╣н╢о▌ н╨н╠н╧ " + days + " н╥н╪н╜о│н╣о┌";
+                WarrantyDays.ForeColor = Color.Red;
+                WarrantyDays.Font = new Font(TodayLabel.Font, FontStyle.Bold);
+            }
+        }
+        private void ResetCalendar_Click(object sender, EventArgs e)
+        {
+            DateTimePicker.Value = DateTime.Now;
+            WarrantyDays.ForeColor = Color.Black;
+            dateTimePicker1_ValueChanged(sender, e);
+            WarrantyComboBox.SelectedIndex = 0;
+            Clipboard.Clear();
+        }
+        //Notes Tab//
+        public void InformComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            NotesRichTextBox.Text = "н÷ о─н╣н╩н╛о└н╥о┌ н╣н╫н╥н╪н╣о│о▌н╦н╥н╨н╣ нЁн╧н╠ " + InformComboBox.Text + " = " + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy"); ;
+            DataObject data = new DataObject();
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
+            Clipboard.SetDataObject(data, true);
+        }
+        public void CancelComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            NotesRichTextBox.Text = "н▒н╧о└н╞н╠ н╠н╨о█о│о┴о┐н╥о┌: " + CancelComboBox.Text + "=" + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy");
+            DataObject data = new DataObject();
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
+            Clipboard.SetDataObject(data, true);
+        }
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            if (NotesRichTextBox.SelectionLength > 0)
+            {
+                DataObject data = new DataObject();
+                data.SetData(DataFormats.UnicodeText, NotesRichTextBox.SelectedText);
+                Clipboard.SetDataObject(data, true);
+            }
+            else
+            {
+                DataObject data = new DataObject();
+                data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
+                Clipboard.SetDataObject(data, true);
+            }
+        }
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            NotesRichTextBox.Text = string.Empty;
+        }
+        //SMS Tab//
+        private void CompleteButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text1);
             Clipboard.SetDataObject(data);
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void RepairButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text2);
             Clipboard.SetDataObject(data);
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void ReplacedButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text3);
             Clipboard.SetDataObject(data);
         }
-        private void button4_Click(object sender, EventArgs e)
+        private void ContactButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text4);
             Clipboard.SetDataObject(data);
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void VoucherFaultyButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text5);
             Clipboard.SetDataObject(data);
         }
-        private void button6_Click(object sender, EventArgs e)
+        private void VoucherButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text6);
             Clipboard.SetDataObject(data);
         }
-        private void button7_Click(object sender, EventArgs e)
+        private void ManufacturerButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text7);
+            Clipboard.SetDataObject(data);
+        }
+        public void VoucherSMSButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            Clipboard.SetText("н÷ о─н╣н╩н╛о└н╥о┌ н╣о─н╜о┐о└о│н╣о┬н╣ о└н©  н╨н╠н╧ н╜о┤н╣н╧ о─н╞о┐о└о┴о┐н╥ " + " Б┌╛" + " (н÷н╖н≥ н∙н═н≥нён╓н║н÷н╕н≈ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
+            DataObject data = new DataObject();
+            data.SetData(Clipboard.GetText());
+            Clipboard.SetDataObject(data);
+        }
+        public void ReturnMoneySMSButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            Clipboard.SetText("н÷ о─н╣н╩н╛о└н╥о┌ н╣о─н╜о┐о└о│н╣о┬н╣ о└н©  н╨н╠н╧ н╜о┤н╣н╧ н╣о─н╧о┐о└о│н©о├н╝ о┤о│н╥н╪н╛о└о┴н╫ " + " Б┌╛=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
+            DataObject data = new DataObject();
+            data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
         }
     }
