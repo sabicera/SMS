@@ -40,6 +40,7 @@
             this.ReturnMoneySMSButton = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.CalendarTabPage = new System.Windows.Forms.TabPage();
+            this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
             this.ReturnLabel = new System.Windows.Forms.Label();
             this.DOALabel = new System.Windows.Forms.Label();
             this.NextHolidayLabel = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.UserLabel = new System.Windows.Forms.Label();
-            this.DeveloperLabel = new System.Windows.Forms.Label();
+            this.VersionLabel = new System.Windows.Forms.Label();
             this.UserComboBox = new System.Windows.Forms.ComboBox();
             this.TabControl.SuspendLayout();
             this.CalendarTabPage.SuspendLayout();
@@ -196,6 +197,8 @@
             // CalendarTabPage
             // 
             this.CalendarTabPage.BackColor = System.Drawing.SystemColors.Control;
+            this.CalendarTabPage.Controls.Add(this.UpdateProgressBar);
+            this.CalendarTabPage.Controls.Add(this.VersionLabel);
             this.CalendarTabPage.Controls.Add(this.ReturnLabel);
             this.CalendarTabPage.Controls.Add(this.DOALabel);
             this.CalendarTabPage.Controls.Add(this.NextHolidayLabel);
@@ -216,6 +219,13 @@
             this.CalendarTabPage.Size = new System.Drawing.Size(476, 259);
             this.CalendarTabPage.TabIndex = 0;
             this.CalendarTabPage.Text = "Ημερολόγιο";
+            // 
+            // UpdateProgressBar
+            // 
+            this.UpdateProgressBar.Location = new System.Drawing.Point(239, 233);
+            this.UpdateProgressBar.Name = "UpdateProgressBar";
+            this.UpdateProgressBar.Size = new System.Drawing.Size(100, 23);
+            this.UpdateProgressBar.TabIndex = 41;
             // 
             // ReturnLabel
             // 
@@ -541,16 +551,16 @@
             this.UserLabel.TabIndex = 42;
             this.UserLabel.Text = "Χρήστης :";
             // 
-            // DeveloperLabel
+            // VersionLabel
             // 
-            this.DeveloperLabel.AutoSize = true;
-            this.DeveloperLabel.BackColor = System.Drawing.Color.Transparent;
-            this.DeveloperLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DeveloperLabel.Location = new System.Drawing.Point(349, 260);
-            this.DeveloperLabel.Name = "DeveloperLabel";
-            this.DeveloperLabel.Size = new System.Drawing.Size(105, 15);
-            this.DeveloperLabel.TabIndex = 44;
-            this.DeveloperLabel.Text = "Developed by A.I.";
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.VersionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.VersionLabel.Location = new System.Drawing.Point(369, 236);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(0, 15);
+            this.VersionLabel.TabIndex = 44;
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserComboBox
             // 
@@ -574,7 +584,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(484, 287);
             this.Controls.Add(this.UserComboBox);
-            this.Controls.Add(this.DeveloperLabel);
             this.Controls.Add(this.UserLabel);
             this.Controls.Add(this.TabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -635,9 +644,10 @@
         private Label TodayLabel;
         private Label UserLabel;
         private RichTextBox NotesRichTextBox;
-        private Label DeveloperLabel;
+        private Label VersionLabel;
         private ComboBox UserComboBox;
         private Panel panel1;
         private Label label1;
+        private ProgressBar UpdateProgressBar;
     }
 }

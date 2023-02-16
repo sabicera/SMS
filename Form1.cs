@@ -1,9 +1,17 @@
 ﻿using SMS.Properties;
+using System;
+using System.Net.Http;
+using System.IO;
+using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SMS
 {
     public partial class Form1 : Form
     {
+        private const string repoUrl = "https://github.com/sabicera/SMS/blob/master/SMS.exe";
+        private const string downloadUrl = "https://github.com/sabicera/SMS/blob/master/SMS.exe";
+
         private List<DateTime> cyprusHolidays = new List<DateTime>();
         string text1 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Ο ΕΛΕΓΧΟΣ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
         string text2 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Η ΕΠΙΣΚΕΥΗ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
@@ -88,11 +96,102 @@ namespace SMS
             AddHolidays(DateTime.Now.Year);
             UserComboBox.Text = Settings.Default.SelectedValue;
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             CurrentDateLabel.Text = DateTime.Now.ToLongDateString();
             List<int> values = new List<int> { 2, 3, 5, 7, 10 };
             WarrantyComboBox.DataSource = values;
+            // Display current version
+            VersionLabel.Text = "Version: " + Application.ProductVersion;
+            try
+            {
+                string currentVersion = Application.ProductVersion;
+                string latestVersion = await GetLatestVersionAsync();
+
+                if (latestVersion != null && latestVersion.CompareTo(currentVersion) > 0)
+                {
+                    DialogResult result = MessageBox.Show(
+                        "A new version of the app is available. Do you want to download and install it?",
+                        "Update available",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        await DownloadUpdateAsync();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You have the latest version of the app.", "Up to date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Update check failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private async Task<string> GetLatestVersionAsync()
+        {
+            string version = null;
+            HttpClient client = new HttpClient();
+
+            // Download the HTML page of the repo to find the latest version tag
+            string html = await client.GetStringAsync(repoUrl);
+            int index = html.IndexOf("latest-version-badge");
+
+            if (index >= 0)
+            {
+                int startIndex = html.IndexOf("title=\"", index) + 7;
+                int endIndex = html.IndexOf("\"", startIndex);
+                version = html.Substring(startIndex, endIndex - startIndex);
+            }
+
+            return version;
+        }
+
+        private async Task DownloadUpdateAsync()
+        {
+            HttpClient client = new HttpClient();
+            Stream stream = null;
+
+            try
+            {
+                // Open a web stream to the latest version download URL
+                stream = await client.GetStreamAsync(downloadUrl);
+
+                // Create a FileStream to save the downloaded file
+                FileStream fileStream = new FileStream("SMS.exe", FileMode.Create);
+
+                // Create a buffer to read from the web stream and write to the file stream
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+
+                // Set up the progress bar
+                UpdateProgressBar.Minimum = 0;
+                UpdateProgressBar.Maximum = (int)(stream.Length / 1024) + 1;
+                UpdateProgressBar.Value = 0;
+
+                // Read from the web stream and write to the file stream until the end
+                while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                {
+                    fileStream.Write(buffer, 0, bytesRead);
+                    UpdateProgressBar.Value++;
+                }
+
+                fileStream.Close();
+                stream.Close();
+
+                MessageBox.Show("Update downloaded successfully. The app will now restart.", "Update downloaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Restart the app to apply the update
+                Process.Start("SMS.exe");
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Update download failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void UserComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
