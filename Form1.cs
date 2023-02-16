@@ -1,10 +1,4 @@
 ﻿using SMS.Properties;
-using System;
-using System.Net.Http;
-using System.IO;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.Net;
 
 namespace SMS
 {
