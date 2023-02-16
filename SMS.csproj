@@ -9,10 +9,10 @@
     <ApplicationIcon>sms.ico</ApplicationIcon>
     <PackageIcon>sms.ico</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>2.0</AssemblyVersion>
-    <FileVersion>2.0</FileVersion>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
     <RepositoryUrl>https://github.com/sabicera/SMS</RepositoryUrl>
-    <Version>2.0$(VersionPrefix)</Version>
+    <Version>$(VersionPrefix)</Version>
   </PropertyGroup>
 
   <ItemGroup>
