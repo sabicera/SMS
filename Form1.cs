@@ -298,7 +298,7 @@ namespace SMS
         public void VoucherSMSButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει πίστωση " + " €" + " (ΟΧΙ ΕΠΙΣΤΡΟΦΗ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
+            Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει πίστωση " + " € (ΟΧΙ ΕΠΙΣΤΡΟΦΗ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
             DataObject data = new DataObject();
             data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
@@ -306,7 +306,7 @@ namespace SMS
         public void ReturnMoneySMSButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει επιστροφή χρημάτων " + " €=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
+            Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει επιστροφή χρημάτων " + " € =" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
             DataObject data = new DataObject();
             data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
