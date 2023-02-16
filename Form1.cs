@@ -10,7 +10,7 @@ namespace SMS
     public partial class Form1 : Form
     {
         private const string repoUrl = "https://github.com/sabicera/SMS/blob/master/SMS.exe";
-        private const string downloadUrl = "https://github.com/sabicera/SMS/blob/master/SMS.exe";
+        private const string downloadUrl = "https://github.com/sabicera";
 
         private List<DateTime> cyprusHolidays = new List<DateTime>();
         string text1 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Ο ΕΛΕΓΧΟΣ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
