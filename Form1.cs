@@ -78,15 +78,11 @@ namespace SMS
                 HolidayLabel.Text = "Χριστούγεννα - " + holiday8.ToString("dddd d MMMM");
             }
         }
-        public Form1(string selectedUser)
-        {
-            InitializeComponent();
-        }
         public Form1()
         {
             InitializeComponent();
 #pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
-            DateTimePicker.ValueChanged += new EventHandler(dateTimePicker1_ValueChanged);
+            DateTimePicker.ValueChanged += new EventHandler(DateTimePicker1_ValueChanged);
 #pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             AddHolidays(DateTime.Now.Year);
             UserComboBox.Text = Settings.Default.SelectedValue;
@@ -109,7 +105,7 @@ namespace SMS
         {
             CalculateRemainingDays();
         }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             CalculateRemainingDays();
         }
@@ -210,7 +206,7 @@ namespace SMS
         {
             DateTimePicker.Value = DateTime.Now;
             WarrantyDays.ForeColor = Color.Black;
-            dateTimePicker1_ValueChanged(sender, e);
+            DateTimePicker1_ValueChanged(sender, e);
             WarrantyComboBox.SelectedIndex = 0;
             Clipboard.Clear();
         }
@@ -348,5 +344,6 @@ namespace SMS
             data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
         }
+
     }
 }

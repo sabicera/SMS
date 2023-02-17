@@ -67,15 +67,15 @@
             this.ManufacturerButton = new System.Windows.Forms.Button();
             this.LanguageLabel = new System.Windows.Forms.Label();
             this.LanguageComboBox = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.NotesPanel = new System.Windows.Forms.Panel();
+            this.NotesLabel = new System.Windows.Forms.Label();
             this.UserLabel = new System.Windows.Forms.Label();
             this.UserComboBox = new System.Windows.Forms.ComboBox();
             this.TabControl.SuspendLayout();
             this.CalendarTabPage.SuspendLayout();
             this.NotesPage.SuspendLayout();
             this.SMSTabPage.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.NotesPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CompleteButton
@@ -160,7 +160,7 @@
             this.MoneybackButton.TabIndex = 22;
             this.MoneybackButton.Text = "Επιστροφή Χρημάτων";
             this.MoneybackButton.UseVisualStyleBackColor = true;
-            this.MoneybackButton.Click += new System.EventHandler(this.ManufacturerButton_Click);
+            this.MoneybackButton.Click += new System.EventHandler(this.MoneybackButton_Click);
             // 
             // VoucherSMSButton
             // 
@@ -513,7 +513,7 @@
             this.SMSTabPage.Controls.Add(this.ManufacturerButton);
             this.SMSTabPage.Controls.Add(this.LanguageLabel);
             this.SMSTabPage.Controls.Add(this.LanguageComboBox);
-            this.SMSTabPage.Controls.Add(this.panel1);
+            this.SMSTabPage.Controls.Add(this.NotesPanel);
             this.SMSTabPage.Controls.Add(this.MoneybackButton);
             this.SMSTabPage.Controls.Add(this.ReplacedButton);
             this.SMSTabPage.Controls.Add(this.ContactButton);
@@ -538,6 +538,7 @@
             this.ManufacturerButton.TabIndex = 40;
             this.ManufacturerButton.Text = "Αποστολή στην Αντιπροσωπεία";
             this.ManufacturerButton.UseVisualStyleBackColor = true;
+            this.ManufacturerButton.Click += new System.EventHandler(this.ManufacturerButton_Click);
             // 
             // LanguageLabel
             // 
@@ -561,26 +562,26 @@
             this.LanguageComboBox.Text = "Ελληνικά";
             this.LanguageComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageComboBox_SelectedIndexChanged);
             // 
-            // panel1
+            // NotesPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.ReturnMoneySMSButton);
-            this.panel1.Controls.Add(this.VoucherSMSButton);
-            this.panel1.Location = new System.Drawing.Point(252, 200);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 56);
-            this.panel1.TabIndex = 37;
+            this.NotesPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.NotesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NotesPanel.Controls.Add(this.NotesLabel);
+            this.NotesPanel.Controls.Add(this.ReturnMoneySMSButton);
+            this.NotesPanel.Controls.Add(this.VoucherSMSButton);
+            this.NotesPanel.Location = new System.Drawing.Point(252, 200);
+            this.NotesPanel.Name = "NotesPanel";
+            this.NotesPanel.Size = new System.Drawing.Size(221, 56);
+            this.NotesPanel.TabIndex = 37;
             // 
-            // label1
+            // NotesLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Σημειώσεις";
+            this.NotesLabel.AutoSize = true;
+            this.NotesLabel.Location = new System.Drawing.Point(77, 3);
+            this.NotesLabel.Name = "NotesLabel";
+            this.NotesLabel.Size = new System.Drawing.Size(67, 15);
+            this.NotesLabel.TabIndex = 37;
+            this.NotesLabel.Text = "Σημειώσεις";
             // 
             // UserLabel
             // 
@@ -632,8 +633,8 @@
             this.NotesPage.PerformLayout();
             this.SMSTabPage.ResumeLayout(false);
             this.SMSTabPage.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.NotesPanel.ResumeLayout(false);
+            this.NotesPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,8 +678,8 @@
         private RichTextBox NotesRichTextBox;
         private Label VersionLabel;
         private ComboBox UserComboBox;
-        private Panel panel1;
-        private Label label1;
+        private Panel NotesPanel;
+        private Label NotesLabel;
         private ComboBox LanguageComboBox;
         private Label LanguageLabel;
         private Button ManufacturerButton;
