@@ -4,14 +4,15 @@ namespace SMS
 {
     public partial class Form1 : Form
     {
-        private List<DateTime> cyprusHolidays = new List<DateTime>();
+        private readonly List<DateTime> cyprusHolidays = new();
         string text1 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Ο ΕΛΕΓΧΟΣ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
         string text2 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Η ΕΠΙΣΚΕΥΗ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
         string text3 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Η ΑΝΤΙΚΑΤΑΣΤΑΣΗ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
         string text4 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΑΜΕΣΑ ΜΑΖΙ ΜΑΣ.";
         string text5 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΕΙΝΑΙ ΠΡΟΒΛHMAΤΙΚΟ. ΕΧΕΤΕ  ΠΙΣΤΩΣΗ ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
         string text6 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΕΧΕΤΕ ΠΙΣΤΩΣΗ  ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
-        string text7 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΠΡΟΩΘΕΙΤΑΙ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΙΑ ΓΙΑ ΕΛΕΓΧΟ.";
+        string text7 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΕΧΕΤΕ ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ  ΕΥΡΩ.";
+        string text8 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΠΡΟΩΘΕΙΤΑΙ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΙΑ ΓΙΑ ΕΛΕΓΧΟ.";
         private void AddHolidays(int year)
         {
             //Σταθερές Εορτές
@@ -84,11 +85,13 @@ namespace SMS
         public Form1()
         {
             InitializeComponent();
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             DateTimePicker.ValueChanged += new EventHandler(dateTimePicker1_ValueChanged);
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             AddHolidays(DateTime.Now.Year);
             UserComboBox.Text = Settings.Default.SelectedValue;
         }
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             CurrentDateLabel.Text = DateTime.Now.ToLongDateString();
             List<int> values = new List<int> { 2, 3, 5, 7, 10 };
@@ -248,6 +251,31 @@ namespace SMS
             NotesRichTextBox.Text = string.Empty;
         }
         //SMS Tab//
+        private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LanguageComboBox.SelectedItem.ToString() == "English")
+            {
+                text1 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. PRODUCT CHECK COMPLETED. YOU CAN PICK IT UP";
+                text2 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. PRODUCT REPAIR COMPLETED. YOU CAN PICK IT UP.";
+                text3 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. PRODUCT REPLACEMENT COMPLETED. YOU CAN PICK IT UP.";
+                text4 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. PLEASE CONTACT US DIRECTLY.";
+                text5 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. YOUR PRODUCT IS PROBLEMATIC. YOU HAVE  EURO CREDIT. TO GET SOMETHING ELSE.";
+                text6 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. YOU HAVE  EURO CREDIT. TO GET SOMETHING ELSE.";
+                text7 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. YOU HAVE  EURO MONEY RETURN.";
+                text8 = "LIMASSOL STORE. TECHNICAL DEPARTMENT. YOUR PRODUCT IS BEING FORWARDED TO THE DEALERSHIP FOR INSPECTION.";
+            }
+            else if (LanguageComboBox.SelectedItem.ToString() == "Ελληνικά")
+            {
+                text1 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Ο ΕΛΕΓΧΟΣ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
+                text2 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Η ΕΠΙΣΚΕΥΗ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
+                text3 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. Η ΑΝΤΙΚΑΤΑΣΤΑΣΗ ΤΟΥ ΠΡΟΙΟΝΤΟΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΜΠΟΡΕΙΤΕ ΝΑ ΠΕΡΑΣΕΤΕ ΝΑ ΤΟ ΠΑΡΑΛΑΒΕΤΕ.";
+                text4 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΠΑΡΑΚΑΛΩ ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΑΜΕΣΑ ΜΑΖΙ ΜΑΣ.";
+                text5 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΕΙΝΑΙ ΠΡΟΒΛHMAΤΙΚΟ. ΕΧΕΤΕ  ΠΙΣΤΩΣΗ ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+                text6 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΕΧΕΤΕ ΠΙΣΤΩΣΗ  ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+                text7 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΕΧΕΤΕ ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ  ΕΥΡΩ.";
+                text8 = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ. ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΠΡΟΩΘΕΙΤΑΙ ΣΤΗΝ ΑΝΤΙΠΡΟΣΩΠΕΙΑ ΓΙΑ ΕΛΕΓΧΟ.";
+            }
+        }
         private void CompleteButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
@@ -290,11 +318,18 @@ namespace SMS
             data.SetData(DataFormats.StringFormat, text6);
             Clipboard.SetDataObject(data);
         }
-        private void ManufacturerButton_Click(object sender, EventArgs e)
+        private void MoneybackButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             DataObject data = new DataObject();
             data.SetData(DataFormats.StringFormat, text7);
+            Clipboard.SetDataObject(data);
+        }
+        private void ManufacturerButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            DataObject data = new DataObject();
+            data.SetData(DataFormats.StringFormat, text8);
             Clipboard.SetDataObject(data);
         }
         public void VoucherSMSButton_Click(object sender, EventArgs e)

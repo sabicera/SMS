@@ -35,12 +35,12 @@
             this.ContactButton = new System.Windows.Forms.Button();
             this.VoucherFaultyButton = new System.Windows.Forms.Button();
             this.VoucherButton = new System.Windows.Forms.Button();
-            this.ManufacturerButton = new System.Windows.Forms.Button();
+            this.MoneybackButton = new System.Windows.Forms.Button();
             this.VoucherSMSButton = new System.Windows.Forms.Button();
             this.ReturnMoneySMSButton = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.CalendarTabPage = new System.Windows.Forms.TabPage();
-            this.UpdateProgressBar = new System.Windows.Forms.ProgressBar();
+            this.VersionLabel = new System.Windows.Forms.Label();
             this.ReturnLabel = new System.Windows.Forms.Label();
             this.DOALabel = new System.Windows.Forms.Label();
             this.NextHolidayLabel = new System.Windows.Forms.Label();
@@ -64,10 +64,12 @@
             this.NotesRichTextBox = new System.Windows.Forms.RichTextBox();
             this.InformLabel = new System.Windows.Forms.Label();
             this.SMSTabPage = new System.Windows.Forms.TabPage();
+            this.ManufacturerButton = new System.Windows.Forms.Button();
+            this.LanguageLabel = new System.Windows.Forms.Label();
+            this.LanguageComboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.UserLabel = new System.Windows.Forms.Label();
-            this.VersionLabel = new System.Windows.Forms.Label();
             this.UserComboBox = new System.Windows.Forms.ComboBox();
             this.TabControl.SuspendLayout();
             this.CalendarTabPage.SuspendLayout();
@@ -139,7 +141,7 @@
             // VoucherButton
             // 
             this.VoucherButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VoucherButton.Location = new System.Drawing.Point(264, 55);
+            this.VoucherButton.Location = new System.Drawing.Point(264, 58);
             this.VoucherButton.Margin = new System.Windows.Forms.Padding(7);
             this.VoucherButton.Name = "VoucherButton";
             this.VoucherButton.Size = new System.Drawing.Size(200, 35);
@@ -148,24 +150,24 @@
             this.VoucherButton.UseVisualStyleBackColor = true;
             this.VoucherButton.Click += new System.EventHandler(this.VoucherButton_Click);
             // 
-            // ManufacturerButton
+            // MoneybackButton
             // 
-            this.ManufacturerButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ManufacturerButton.Location = new System.Drawing.Point(264, 103);
-            this.ManufacturerButton.Margin = new System.Windows.Forms.Padding(7);
-            this.ManufacturerButton.Name = "ManufacturerButton";
-            this.ManufacturerButton.Size = new System.Drawing.Size(200, 35);
-            this.ManufacturerButton.TabIndex = 22;
-            this.ManufacturerButton.Text = "Αποστολή στην Αντιπροσωπεία";
-            this.ManufacturerButton.UseVisualStyleBackColor = true;
-            this.ManufacturerButton.Click += new System.EventHandler(this.ManufacturerButton_Click);
+            this.MoneybackButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MoneybackButton.Location = new System.Drawing.Point(264, 106);
+            this.MoneybackButton.Margin = new System.Windows.Forms.Padding(7);
+            this.MoneybackButton.Name = "MoneybackButton";
+            this.MoneybackButton.Size = new System.Drawing.Size(200, 35);
+            this.MoneybackButton.TabIndex = 22;
+            this.MoneybackButton.Text = "Επιστροφή Χρημάτων";
+            this.MoneybackButton.UseVisualStyleBackColor = true;
+            this.MoneybackButton.Click += new System.EventHandler(this.ManufacturerButton_Click);
             // 
             // VoucherSMSButton
             // 
             this.VoucherSMSButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VoucherSMSButton.Location = new System.Drawing.Point(3, 35);
+            this.VoucherSMSButton.Location = new System.Drawing.Point(3, 24);
             this.VoucherSMSButton.Name = "VoucherSMSButton";
-            this.VoucherSMSButton.Size = new System.Drawing.Size(98, 35);
+            this.VoucherSMSButton.Size = new System.Drawing.Size(98, 23);
             this.VoucherSMSButton.TabIndex = 35;
             this.VoucherSMSButton.Text = "Πίστωση";
             this.VoucherSMSButton.UseVisualStyleBackColor = true;
@@ -174,9 +176,9 @@
             // ReturnMoneySMSButton
             // 
             this.ReturnMoneySMSButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ReturnMoneySMSButton.Location = new System.Drawing.Point(118, 35);
+            this.ReturnMoneySMSButton.Location = new System.Drawing.Point(118, 24);
             this.ReturnMoneySMSButton.Name = "ReturnMoneySMSButton";
-            this.ReturnMoneySMSButton.Size = new System.Drawing.Size(98, 35);
+            this.ReturnMoneySMSButton.Size = new System.Drawing.Size(98, 23);
             this.ReturnMoneySMSButton.TabIndex = 36;
             this.ReturnMoneySMSButton.Text = "Επιστροφή";
             this.ReturnMoneySMSButton.UseVisualStyleBackColor = true;
@@ -197,7 +199,6 @@
             // CalendarTabPage
             // 
             this.CalendarTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.CalendarTabPage.Controls.Add(this.UpdateProgressBar);
             this.CalendarTabPage.Controls.Add(this.VersionLabel);
             this.CalendarTabPage.Controls.Add(this.ReturnLabel);
             this.CalendarTabPage.Controls.Add(this.DOALabel);
@@ -220,12 +221,16 @@
             this.CalendarTabPage.TabIndex = 0;
             this.CalendarTabPage.Text = "Ημερολόγιο";
             // 
-            // UpdateProgressBar
+            // VersionLabel
             // 
-            this.UpdateProgressBar.Location = new System.Drawing.Point(239, 233);
-            this.UpdateProgressBar.Name = "UpdateProgressBar";
-            this.UpdateProgressBar.Size = new System.Drawing.Size(100, 23);
-            this.UpdateProgressBar.TabIndex = 41;
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.VersionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.VersionLabel.Location = new System.Drawing.Point(369, 236);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(0, 15);
+            this.VersionLabel.TabIndex = 44;
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ReturnLabel
             // 
@@ -505,8 +510,11 @@
             // SMSTabPage
             // 
             this.SMSTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.SMSTabPage.Controls.Add(this.panel1);
             this.SMSTabPage.Controls.Add(this.ManufacturerButton);
+            this.SMSTabPage.Controls.Add(this.LanguageLabel);
+            this.SMSTabPage.Controls.Add(this.LanguageComboBox);
+            this.SMSTabPage.Controls.Add(this.panel1);
+            this.SMSTabPage.Controls.Add(this.MoneybackButton);
             this.SMSTabPage.Controls.Add(this.ReplacedButton);
             this.SMSTabPage.Controls.Add(this.ContactButton);
             this.SMSTabPage.Controls.Add(this.CompleteButton);
@@ -520,6 +528,39 @@
             this.SMSTabPage.TabIndex = 2;
             this.SMSTabPage.Text = "SMS";
             // 
+            // ManufacturerButton
+            // 
+            this.ManufacturerButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ManufacturerButton.Location = new System.Drawing.Point(264, 154);
+            this.ManufacturerButton.Margin = new System.Windows.Forms.Padding(7);
+            this.ManufacturerButton.Name = "ManufacturerButton";
+            this.ManufacturerButton.Size = new System.Drawing.Size(200, 35);
+            this.ManufacturerButton.TabIndex = 40;
+            this.ManufacturerButton.Text = "Αποστολή στην Αντιπροσωπεία";
+            this.ManufacturerButton.UseVisualStyleBackColor = true;
+            // 
+            // LanguageLabel
+            // 
+            this.LanguageLabel.AutoSize = true;
+            this.LanguageLabel.Location = new System.Drawing.Point(15, 204);
+            this.LanguageLabel.Name = "LanguageLabel";
+            this.LanguageLabel.Size = new System.Drawing.Size(103, 15);
+            this.LanguageLabel.TabIndex = 39;
+            this.LanguageLabel.Text = "Επιλογή γλώσσας";
+            // 
+            // LanguageComboBox
+            // 
+            this.LanguageComboBox.FormattingEnabled = true;
+            this.LanguageComboBox.Items.AddRange(new object[] {
+            "Ελληνικά",
+            "English"});
+            this.LanguageComboBox.Location = new System.Drawing.Point(123, 200);
+            this.LanguageComboBox.Name = "LanguageComboBox";
+            this.LanguageComboBox.Size = new System.Drawing.Size(87, 23);
+            this.LanguageComboBox.TabIndex = 38;
+            this.LanguageComboBox.Text = "Ελληνικά";
+            this.LanguageComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageComboBox_SelectedIndexChanged);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -527,15 +568,15 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.ReturnMoneySMSButton);
             this.panel1.Controls.Add(this.VoucherSMSButton);
-            this.panel1.Location = new System.Drawing.Point(247, 148);
+            this.panel1.Location = new System.Drawing.Point(252, 200);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 75);
+            this.panel1.Size = new System.Drawing.Size(221, 56);
             this.panel1.TabIndex = 37;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 9);
+            this.label1.Location = new System.Drawing.Point(77, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 37;
@@ -551,17 +592,6 @@
             this.UserLabel.TabIndex = 42;
             this.UserLabel.Text = "Χρήστης :";
             // 
-            // VersionLabel
-            // 
-            this.VersionLabel.AutoSize = true;
-            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.VersionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.VersionLabel.Location = new System.Drawing.Point(369, 236);
-            this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(0, 15);
-            this.VersionLabel.TabIndex = 44;
-            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // UserComboBox
             // 
             this.UserComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -574,7 +604,7 @@
             "ΠΑΡΑΣΚΕΥΑΣ"});
             this.UserComboBox.Location = new System.Drawing.Point(85, 257);
             this.UserComboBox.Name = "UserComboBox";
-            this.UserComboBox.Size = new System.Drawing.Size(145, 23);
+            this.UserComboBox.Size = new System.Drawing.Size(129, 23);
             this.UserComboBox.TabIndex = 45;
             // 
             // Form1
@@ -601,6 +631,7 @@
             this.NotesPage.ResumeLayout(false);
             this.NotesPage.PerformLayout();
             this.SMSTabPage.ResumeLayout(false);
+            this.SMSTabPage.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -616,7 +647,7 @@
         private Button ContactButton;
         private Button VoucherFaultyButton;
         private Button VoucherButton;
-        private Button ManufacturerButton;
+        private Button MoneybackButton;
         private Button VoucherSMSButton;
         private Button ReturnMoneySMSButton;
         private Button ResetCalendar;
@@ -648,6 +679,8 @@
         private ComboBox UserComboBox;
         private Panel panel1;
         private Label label1;
-        private ProgressBar UpdateProgressBar;
+        private ComboBox LanguageComboBox;
+        private Label LanguageLabel;
+        private Button ManufacturerButton;
     }
 }
