@@ -69,6 +69,13 @@
             this.LanguageComboBox = new System.Windows.Forms.ComboBox();
             this.NotesPanel = new System.Windows.Forms.Panel();
             this.NotesLabel = new System.Windows.Forms.Label();
+            this.CalculatorTabPage = new System.Windows.Forms.TabPage();
+            this.ResetCalcButton = new System.Windows.Forms.Button();
+            this.CalculateButton = new System.Windows.Forms.Button();
+            this.HistoryRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.VATSelectorComboBox = new System.Windows.Forms.ComboBox();
+            this.PriceVATLabel = new System.Windows.Forms.Label();
+            this.PriceInputTextBox = new System.Windows.Forms.TextBox();
             this.UserLabel = new System.Windows.Forms.Label();
             this.UserComboBox = new System.Windows.Forms.ComboBox();
             this.TabControl.SuspendLayout();
@@ -76,6 +83,7 @@
             this.NotesPage.SuspendLayout();
             this.SMSTabPage.SuspendLayout();
             this.NotesPanel.SuspendLayout();
+            this.CalculatorTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // CompleteButton
@@ -189,6 +197,7 @@
             this.TabControl.Controls.Add(this.CalendarTabPage);
             this.TabControl.Controls.Add(this.NotesPage);
             this.TabControl.Controls.Add(this.SMSTabPage);
+            this.TabControl.Controls.Add(this.CalculatorTabPage);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 0);
             this.TabControl.Name = "TabControl";
@@ -583,6 +592,81 @@
             this.NotesLabel.TabIndex = 37;
             this.NotesLabel.Text = "Σημειώσεις";
             // 
+            // CalculatorTabPage
+            // 
+            this.CalculatorTabPage.BackColor = System.Drawing.SystemColors.Control;
+            this.CalculatorTabPage.Controls.Add(this.ResetCalcButton);
+            this.CalculatorTabPage.Controls.Add(this.CalculateButton);
+            this.CalculatorTabPage.Controls.Add(this.HistoryRichTextBox);
+            this.CalculatorTabPage.Controls.Add(this.VATSelectorComboBox);
+            this.CalculatorTabPage.Controls.Add(this.PriceVATLabel);
+            this.CalculatorTabPage.Controls.Add(this.PriceInputTextBox);
+            this.CalculatorTabPage.Location = new System.Drawing.Point(4, 24);
+            this.CalculatorTabPage.Name = "CalculatorTabPage";
+            this.CalculatorTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.CalculatorTabPage.Size = new System.Drawing.Size(476, 259);
+            this.CalculatorTabPage.TabIndex = 3;
+            this.CalculatorTabPage.Text = "Calculator";
+            // 
+            // ResetCalcButton
+            // 
+            this.ResetCalcButton.BackColor = System.Drawing.Color.Red;
+            this.ResetCalcButton.Location = new System.Drawing.Point(393, 233);
+            this.ResetCalcButton.Name = "ResetCalcButton";
+            this.ResetCalcButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetCalcButton.TabIndex = 11;
+            this.ResetCalcButton.Text = "Reset";
+            this.ResetCalcButton.UseVisualStyleBackColor = false;
+            this.ResetCalcButton.Click += new System.EventHandler(this.ResetCalcButton_Click);
+            // 
+            // CalculateButton
+            // 
+            this.CalculateButton.BackColor = System.Drawing.Color.Lime;
+            this.CalculateButton.Location = new System.Drawing.Point(188, 31);
+            this.CalculateButton.Name = "CalculateButton";
+            this.CalculateButton.Size = new System.Drawing.Size(75, 23);
+            this.CalculateButton.TabIndex = 10;
+            this.CalculateButton.Text = "Calculate";
+            this.CalculateButton.UseVisualStyleBackColor = false;
+            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
+            // 
+            // HistoryRichTextBox
+            // 
+            this.HistoryRichTextBox.Location = new System.Drawing.Point(276, 13);
+            this.HistoryRichTextBox.Name = "HistoryRichTextBox";
+            this.HistoryRichTextBox.Size = new System.Drawing.Size(192, 214);
+            this.HistoryRichTextBox.TabIndex = 9;
+            this.HistoryRichTextBox.Text = "";
+            // 
+            // VATSelectorComboBox
+            // 
+            this.VATSelectorComboBox.FormattingEnabled = true;
+            this.VATSelectorComboBox.Items.AddRange(new object[] {
+            "19%",
+            "5%"});
+            this.VATSelectorComboBox.Location = new System.Drawing.Point(123, 31);
+            this.VATSelectorComboBox.Name = "VATSelectorComboBox";
+            this.VATSelectorComboBox.Size = new System.Drawing.Size(59, 23);
+            this.VATSelectorComboBox.TabIndex = 8;
+            this.VATSelectorComboBox.Text = "19%";
+            // 
+            // PriceVATLabel
+            // 
+            this.PriceVATLabel.AutoSize = true;
+            this.PriceVATLabel.Location = new System.Drawing.Point(25, 13);
+            this.PriceVATLabel.Name = "PriceVATLabel";
+            this.PriceVATLabel.Size = new System.Drawing.Size(81, 15);
+            this.PriceVATLabel.TabIndex = 7;
+            this.PriceVATLabel.Text = "Price with VAT";
+            // 
+            // PriceInputTextBox
+            // 
+            this.PriceInputTextBox.Location = new System.Drawing.Point(15, 31);
+            this.PriceInputTextBox.Name = "PriceInputTextBox";
+            this.PriceInputTextBox.Size = new System.Drawing.Size(100, 23);
+            this.PriceInputTextBox.TabIndex = 6;
+            this.PriceInputTextBox.TextChanged += new System.EventHandler(this.PriceInputTextBox_TextChanged);
+            // 
             // UserLabel
             // 
             this.UserLabel.AutoSize = true;
@@ -635,6 +719,8 @@
             this.SMSTabPage.PerformLayout();
             this.NotesPanel.ResumeLayout(false);
             this.NotesPanel.PerformLayout();
+            this.CalculatorTabPage.ResumeLayout(false);
+            this.CalculatorTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,5 +769,12 @@
         private ComboBox LanguageComboBox;
         private Label LanguageLabel;
         private Button ManufacturerButton;
+        private TabPage CalculatorTabPage;
+        private Button ResetCalcButton;
+        private Button CalculateButton;
+        private RichTextBox HistoryRichTextBox;
+        private ComboBox VATSelectorComboBox;
+        private Label PriceVATLabel;
+        private TextBox PriceInputTextBox;
     }
 }

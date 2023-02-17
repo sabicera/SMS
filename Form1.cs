@@ -1,4 +1,5 @@
 ﻿using SMS.Properties;
+using System.Globalization;
 
 namespace SMS
 {
@@ -344,6 +345,52 @@ namespace SMS
             data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
         }
-
+        // VAT Calculator
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            // Get the selected item in the ComboBox
+            string selectedItem = VATSelectorComboBox.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(selectedItem))
+            {
+                // Set the divisor based on the selected item
+                double divisor = selectedItem == "19%" ? 1.19 : 1.05;
+                // Get the price entered by the user
+                if (double.TryParse(PriceInputTextBox.Text, out double price))
+                {
+                    // Divide the price by the selected value
+                    double result = price / divisor;
+                    // Display the calculation in the RichTextBox
+                    string calculation = $"{price} / {divisor} = {result:F2}";
+                    // Display the calculation in the RichTextBox
+                    if (HistoryRichTextBox.Text == "")
+                    {
+                        HistoryRichTextBox.AppendText(price.ToString("F2", CultureInfo.InvariantCulture) + " / " + divisor.ToString("F2", CultureInfo.InvariantCulture) + " = " + result.ToString("F2", CultureInfo.InvariantCulture));
+                    }
+                    else
+                    {
+                        HistoryRichTextBox.AppendText("\n" + price.ToString("F2", CultureInfo.InvariantCulture) + " / " + divisor.ToString("F2", CultureInfo.InvariantCulture) + " = " + result.ToString("F2", CultureInfo.InvariantCulture));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid price entered. Please enter a valid number.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a VAT percentage.");
+            }
+            // Subscribe back to the TextChanged event
+            PriceInputTextBox.TextChanged += PriceInputTextBox_TextChanged;
+        }
+        private void PriceInputTextBox_TextChanged(object sender, EventArgs e)
+        {
+            // Code to handle the TextChanged event
+        }
+        private void ResetCalcButton_Click(object sender, EventArgs e)
+        {
+            PriceInputTextBox.Clear();
+            HistoryRichTextBox.Clear();
+        }
     }
 }
