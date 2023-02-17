@@ -361,7 +361,7 @@
             this.DateTimePicker.Name = "DateTimePicker";
             this.DateTimePicker.Size = new System.Drawing.Size(240, 22);
             this.DateTimePicker.TabIndex = 29;
-            this.DateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.DateTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // DaysLabel
             // 
