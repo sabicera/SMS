@@ -1,5 +1,4 @@
-﻿using SMS.Properties;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace SMS
 {
@@ -32,15 +31,15 @@ namespace SMS
             cyprusHolidays.Add(new DateTime(2023, 1, 2)); // Πρωτοχρονία 2023
             cyprusHolidays.Add(new DateTime(2023, 2, 27)); // Καθαρά Δευτέρα 2023
 
-            DateTime holiday1 = new DateTime(year, 1, 1);
-            DateTime holiday2 = new DateTime(year, 1, 6);
-            DateTime holiday21 = new DateTime(year, 2, 27);
-            DateTime holiday3 = new DateTime(year, 3, 25);
-            DateTime holiday4 = new DateTime(year, 4, 1);
-            DateTime holiday5 = new DateTime(year, 5, 1);
-            DateTime holiday6 = new DateTime(year, 8, 15);
-            DateTime holiday7 = new DateTime(year, 10, 28);
-            DateTime holiday8 = new DateTime(year, 12, 25);
+            DateTime holiday1 = new (year, 1, 1);
+            DateTime holiday2 = new (year, 1, 6);
+            DateTime holiday21 = new (year, 2, 27);
+            DateTime holiday3 = new (year, 3, 25);
+            DateTime holiday4 = new (year, 4, 1);
+            DateTime holiday5 = new (year, 5, 1);
+            DateTime holiday6 = new (year, 8, 15);
+            DateTime holiday7 = new (year, 10, 28);
+            DateTime holiday8 = new (year, 12, 25);
 
             if (DateTime.Now.Date <= holiday1)
             {
@@ -82,24 +81,34 @@ namespace SMS
         public Form1()
         {
             InitializeComponent();
+            // Load the saved value if it exists
 #pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             DateTimePicker.ValueChanged += new EventHandler(DateTimePicker1_ValueChanged);
 #pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             AddHolidays(DateTime.Now.Year);
-            UserComboBox.Text = Settings.Default.SelectedValue;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             CurrentDateLabel.Text = DateTime.Now.ToLongDateString();
-            List<int> values = new List<int> { 2, 3, 5, 7, 10 };
+            List<int> values = new() { 2, 3, 5, 7, 10 };
             WarrantyComboBox.DataSource = values;
             // Display current version
             VersionLabel.Text = "Version: " + Application.ProductVersion;
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.LatestUser))
+            {
+                UserComboBox.SelectedItem = Properties.Settings.Default.LatestUser;
+            }
+        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Save the value to the application settings
+            Properties.Settings.Default.LatestUser = UserComboBox.SelectedItem?.ToString();
+            Properties.Settings.Default.Save();
         }
         private void UserComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.Default.SelectedValue = UserComboBox.Text;
-            Settings.Default.Save();
+            Properties.Settings.Default.LatestUser = UserComboBox.SelectedItem?.ToString();
+            Properties.Settings.Default.Save();
         }
         //Calendar Tab//
         private void WarrantyComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -216,7 +225,7 @@ namespace SMS
         {
             Clipboard.Clear();
             NotesRichTextBox.Text = "Ο πελάτης ενημερώθηκε για " + InformComboBox.Text + " = " + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy"); ;
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data, true);
         }
@@ -224,7 +233,7 @@ namespace SMS
         {
             Clipboard.Clear();
             NotesRichTextBox.Text = "Αιτία ακύρωσης: " + CancelComboBox.Text + "=" + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy");
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data, true);
         }
@@ -232,13 +241,13 @@ namespace SMS
         {
             if (NotesRichTextBox.SelectionLength > 0)
             {
-                DataObject data = new DataObject();
+                DataObject data = new();
                 data.SetData(DataFormats.UnicodeText, NotesRichTextBox.SelectedText);
                 Clipboard.SetDataObject(data, true);
             }
             else
             {
-                DataObject data = new DataObject();
+                DataObject data = new();
                 data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
                 Clipboard.SetDataObject(data, true);
             }
@@ -276,56 +285,56 @@ namespace SMS
         private void CompleteButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text1);
             Clipboard.SetDataObject(data);
         }
         private void RepairButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text2);
             Clipboard.SetDataObject(data);
         }
         private void ReplacedButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text3);
             Clipboard.SetDataObject(data);
         }
         private void ContactButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text4);
             Clipboard.SetDataObject(data);
         }
         private void VoucherFaultyButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text5);
             Clipboard.SetDataObject(data);
         }
         private void VoucherButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text6);
             Clipboard.SetDataObject(data);
         }
         private void MoneybackButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text7);
             Clipboard.SetDataObject(data);
         }
         private void ManufacturerButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(DataFormats.StringFormat, text8);
             Clipboard.SetDataObject(data);
         }
@@ -333,7 +342,7 @@ namespace SMS
         {
             Clipboard.Clear();
             Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει πίστωση " + "€ (ΟΧΙ ΕΠΙΣΤΡΟΦΗ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
         }
@@ -341,7 +350,7 @@ namespace SMS
         {
             Clipboard.Clear();
             Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει επιστροφή χρημάτων " + "€ =" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
-            DataObject data = new DataObject();
+            DataObject data = new();
             data.SetData(Clipboard.GetText());
             Clipboard.SetDataObject(data);
         }
@@ -349,7 +358,7 @@ namespace SMS
         private void CalculateButton_Click(object sender, EventArgs e)
         {
             // Get the selected item in the ComboBox
-            string selectedItem = VATSelectorComboBox.SelectedItem?.ToString();
+            string? selectedItem = VATSelectorComboBox.SelectedItem?.ToString();
             if (!string.IsNullOrEmpty(selectedItem))
             {
                 // Set the divisor based on the selected item
@@ -381,7 +390,9 @@ namespace SMS
                 MessageBox.Show("Please select a VAT percentage.");
             }
             // Subscribe back to the TextChanged event
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             PriceInputTextBox.TextChanged += PriceInputTextBox_TextChanged;
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
         }
         private void PriceInputTextBox_TextChanged(object sender, EventArgs e)
         {
