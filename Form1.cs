@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace SMS
+﻿namespace SMS
 {
     public partial class Form1 : Form
     {
@@ -368,6 +366,10 @@ namespace SMS
             DataObject data = new();
             data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data);
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -70,10 +70,14 @@
             ManufacturerButton = new Button();
             LanguageLabel = new Label();
             LanguageComboBox = new ComboBox();
+            CallCenterTabPage = new TabPage();
+            CallLabel = new Label();
+            CallComboBox = new ComboBox();
             TabControl.SuspendLayout();
             CalendarTabPage.SuspendLayout();
             NotesPage.SuspendLayout();
             SMSTabPage.SuspendLayout();
+            CallCenterTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // CompleteButton
@@ -165,6 +169,7 @@
             TabControl.Controls.Add(CalendarTabPage);
             TabControl.Controls.Add(NotesPage);
             TabControl.Controls.Add(SMSTabPage);
+            TabControl.Controls.Add(CallCenterTabPage);
             TabControl.Dock = DockStyle.Fill;
             TabControl.Location = new Point(0, 0);
             TabControl.Name = "TabControl";
@@ -578,6 +583,37 @@
             LanguageComboBox.Text = "Ελληνικά";
             LanguageComboBox.SelectedIndexChanged += LanguageComboBox_SelectedIndexChanged;
             // 
+            // CallCenterTabPage
+            // 
+            CallCenterTabPage.BackColor = SystemColors.Control;
+            CallCenterTabPage.Controls.Add(CallLabel);
+            CallCenterTabPage.Controls.Add(CallComboBox);
+            CallCenterTabPage.Location = new Point(4, 24);
+            CallCenterTabPage.Name = "CallCenterTabPage";
+            CallCenterTabPage.Padding = new Padding(3);
+            CallCenterTabPage.Size = new Size(476, 259);
+            CallCenterTabPage.TabIndex = 3;
+            CallCenterTabPage.Text = "Call Center";
+            // 
+            // CallLabel
+            // 
+            CallLabel.AutoSize = true;
+            CallLabel.Location = new Point(15, 21);
+            CallLabel.Name = "CallLabel";
+            CallLabel.Size = new Size(135, 15);
+            CallLabel.TabIndex = 1;
+            CallLabel.Text = "Απαντήθηκε κλήση για :";
+            // 
+            // CallComboBox
+            // 
+            CallComboBox.FormattingEnabled = true;
+            CallComboBox.Items.AddRange(new object[] { "Ερώτηση κατάστασης παραγγελίας", "Ερώτηση αγοράς", "Ερώτηση πληρωμής", "Λάθος νούμερο", "Ερώτηση διαθεσιμότητας", "ΠΩΛΗΣΗ", "Ακύρωση παραγγελίας", "Ερώτηση ωραρίου λειτουργίας", "SERVICE" });
+            CallComboBox.Location = new Point(156, 18);
+            CallComboBox.Name = "CallComboBox";
+            CallComboBox.Size = new Size(312, 23);
+            CallComboBox.TabIndex = 0;
+            CallComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -602,6 +638,8 @@
             NotesPage.PerformLayout();
             SMSTabPage.ResumeLayout(false);
             SMSTabPage.PerformLayout();
+            CallCenterTabPage.ResumeLayout(false);
+            CallCenterTabPage.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -647,5 +685,8 @@
         private Button SentToRepairΒutton;
         private Button ReturnMoneyServiceButton;
         private Button VoucherServiceButton;
+        private TabPage CallCenterTabPage;
+        private Label CallLabel;
+        private ComboBox CallComboBox;
     }
 }
