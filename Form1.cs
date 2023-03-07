@@ -31,15 +31,15 @@ namespace SMS
             cyprusHolidays.Add(new DateTime(2023, 1, 2)); // Πρωτοχρονία 2023
             cyprusHolidays.Add(new DateTime(2023, 2, 27)); // Καθαρά Δευτέρα 2023
 
-            DateTime holiday1 = new (year, 1, 1);
-            DateTime holiday2 = new (year, 1, 6);
-            DateTime holiday21 = new (year, 2, 27);
-            DateTime holiday3 = new (year, 3, 25);
-            DateTime holiday4 = new (year, 4, 1);
-            DateTime holiday5 = new (year, 5, 1);
-            DateTime holiday6 = new (year, 8, 15);
-            DateTime holiday7 = new (year, 10, 28);
-            DateTime holiday8 = new (year, 12, 25);
+            DateTime holiday1 = new(year, 1, 1);
+            DateTime holiday2 = new(year, 1, 6);
+            DateTime holiday21 = new(year, 2, 27);
+            DateTime holiday3 = new(year, 3, 25);
+            DateTime holiday4 = new(year, 4, 1);
+            DateTime holiday5 = new(year, 5, 1);
+            DateTime holiday6 = new(year, 8, 15);
+            DateTime holiday7 = new(year, 10, 28);
+            DateTime holiday8 = new(year, 12, 25);
 
             if (DateTime.Now.Date <= holiday1)
             {
@@ -93,7 +93,6 @@ namespace SMS
             List<int> values = new() { 2, 3, 5, 7, 10 };
             WarrantyComboBox.DataSource = values;
             // Display current version
-            VersionLabel.Text = "Version: " + Application.ProductVersion;
             if (!string.IsNullOrEmpty(Properties.Settings.Default.LatestUser))
             {
                 UserComboBox.SelectedItem = Properties.Settings.Default.LatestUser;
@@ -224,7 +223,7 @@ namespace SMS
         public void InformComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            NotesRichTextBox.Text = "Ο πελάτης ενημερώθηκε για " + InformComboBox.Text + " = " + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy"); ;
+            NotesRichTextBox.Text = "Ο πελάτης ενημερώθηκε για " + InformComboBox.Text + "=" + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy"); ;
             DataObject data = new();
             data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data, true);
@@ -338,70 +337,37 @@ namespace SMS
             data.SetData(DataFormats.StringFormat, text8);
             Clipboard.SetDataObject(data);
         }
-        public void VoucherNotesButton_Click(object sender, EventArgs e)
+        public void VoucherServiceButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει πίστωση " + "€ (ΟΧΙ ΕΠΙΣΤΡΟΦΗ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
+            NotesRichTextBox.Text = "Ο πελάτης επέστρεψε το  και έχει πίστωση " + "€ (ΟΧΙ ΕΠΙΣΤΡΟΦΗ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString();
             DataObject data = new();
-            data.SetData(Clipboard.GetText());
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data);
         }
-        public void ReturnMoneyNotesButton_Click(object sender, EventArgs e)
+        public void ReturnMoneyServiceButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
-            Clipboard.SetText("Ο πελάτης επέστρεψε το  και έχει επιστροφή χρημάτων " + "€ =" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString());
+            NotesRichTextBox.Text = "Ο πελάτης επέστρεψε το  και έχει επιστροφή χρημάτων " + "€=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString();
             DataObject data = new();
-            data.SetData(Clipboard.GetText());
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data);
         }
-        // VAT Calculator
-        private void CalculateButton_Click(object sender, EventArgs e)
+        private void SentToRepairΒutton_Click(object sender, EventArgs e)
         {
-            // Get the selected item in the ComboBox
-            string? selectedItem = VATSelectorComboBox.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedItem))
-            {
-                // Set the divisor based on the selected item
-                double divisor = selectedItem == "19%" ? 1.19 : 1.05;
-                // Get the price entered by the user
-                if (double.TryParse(PriceInputTextBox.Text, out double price))
-                {
-                    // Divide the price by the selected value
-                    double result = price / divisor;
-                    // Display the calculation in the RichTextBox
-                    string calculation = $"{price} / {divisor} = {result:F2}";
-                    // Display the calculation in the RichTextBox
-                    if (HistoryRichTextBox.Text == "")
-                    {
-                        HistoryRichTextBox.AppendText(price.ToString("F2", CultureInfo.InvariantCulture) + " / " + divisor.ToString("F2", CultureInfo.InvariantCulture) + " = " + result.ToString("F2", CultureInfo.InvariantCulture));
-                    }
-                    else
-                    {
-                        HistoryRichTextBox.AppendText("\n" + price.ToString("F2", CultureInfo.InvariantCulture) + " / " + divisor.ToString("F2", CultureInfo.InvariantCulture) + " = " + result.ToString("F2", CultureInfo.InvariantCulture));
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid price entered. Please enter a valid number.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a VAT percentage.");
-            }
-            // Subscribe back to the TextChanged event
-#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
-            PriceInputTextBox.TextChanged += PriceInputTextBox_TextChanged;
-#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
+            Clipboard.Clear();
+            NotesRichTextBox.Text = "Το προιον απεστάλει στην αντιπροσωπεία για έλεγχο=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString();
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
+            Clipboard.SetDataObject(data);
         }
-        private void PriceInputTextBox_TextChanged(object sender, EventArgs e)
+        private void SameFromGRButton_Click(object sender, EventArgs e)
         {
-            // Code to handle the TextChanged event
-        }
-        private void ResetCalcButton_Click(object sender, EventArgs e)
-        {
-            PriceInputTextBox.Clear();
-            HistoryRichTextBox.Clear();
+            Clipboard.Clear();
+            NotesRichTextBox.Text = "Τροφοδοσία το ίδιο από Ελλάδα=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString();
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
+            Clipboard.SetDataObject(data);
         }
     }
 }
