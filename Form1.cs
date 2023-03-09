@@ -371,5 +371,14 @@
         {
 
         }
+
+        private void OnlineOrderButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            NotesRichTextBox.Text = "Τηλεφωνική παραγγελία=" + UserComboBox.Text + " " + DateTime.Now.ToShortDateString();
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
     }
 }

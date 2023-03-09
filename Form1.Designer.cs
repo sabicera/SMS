@@ -73,6 +73,7 @@
             CallCenterTabPage = new TabPage();
             CallLabel = new Label();
             CallComboBox = new ComboBox();
+            OnlineOrderButton = new Button();
             TabControl.SuspendLayout();
             CalendarTabPage.SuspendLayout();
             NotesPage.SuspendLayout();
@@ -394,6 +395,7 @@
             // NotesPage
             // 
             NotesPage.BackColor = SystemColors.Control;
+            NotesPage.Controls.Add(OnlineOrderButton);
             NotesPage.Controls.Add(SameFromGRButton);
             NotesPage.Controls.Add(SentToRepairΒutton);
             NotesPage.Controls.Add(ReturnMoneyServiceButton);
@@ -614,6 +616,17 @@
             CallComboBox.TabIndex = 0;
             CallComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // OnlineOrderButton
+            // 
+            OnlineOrderButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            OnlineOrderButton.Location = new Point(162, 69);
+            OnlineOrderButton.Name = "OnlineOrderButton";
+            OnlineOrderButton.Size = new Size(150, 30);
+            OnlineOrderButton.TabIndex = 51;
+            OnlineOrderButton.Text = "Τηλεφωνική παραγγελία";
+            OnlineOrderButton.UseVisualStyleBackColor = true;
+            OnlineOrderButton.Click += OnlineOrderButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -688,5 +701,6 @@
         private TabPage CallCenterTabPage;
         private Label CallLabel;
         private ComboBox CallComboBox;
+        private Button OnlineOrderButton;
     }
 }
