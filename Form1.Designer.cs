@@ -886,7 +886,7 @@
             MinimumSize = new Size(500, 326);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "E-Shop v2.1";
+            Text = "E-Shop v2.2";
             FormClosed += Form1_FormClosed;
             Load += Form1_Load;
             TabControl.ResumeLayout(false);
