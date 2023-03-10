@@ -436,7 +436,7 @@ namespace SMS
             }
             else
             {
-                message += " ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΕΙΝΑΙ ΠΡΟΒΛHMAΤΙΚΟ. ΕΧΕΤΕ ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ " + PriceTextBox.Text + " ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+                message += " ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΕΙΝΑΙ ΠΡΟΒΛHMAΤΙΚΟ. ΕΧΕΤΕ ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ " + PriceTextBox.Text + " ΕΥΡΩ.";
             }
             SMSRichTextBox.Text = message; DataObject data = new();
             data.SetData(DataFormats.UnicodeText, SMSRichTextBox.Text);
