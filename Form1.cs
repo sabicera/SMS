@@ -1,4 +1,6 @@
-﻿namespace SMS
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace SMS
 {
     public partial class Form1 : Form
     {
@@ -367,11 +369,6 @@
             data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data);
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void OnlineOrderButton_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
@@ -379,6 +376,115 @@
             DataObject data = new();
             data.SetData(DataFormats.UnicodeText, NotesRichTextBox.Text);
             Clipboard.SetDataObject(data);
+        }
+        private void WrongOrderButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            MsgRichTextBox.Text = "Λάθος αγορά, ο πελάτης επιθυμεί πίστωση για μελλοντική αγορά\n\nΤο προιόν κλείνει κανονικα";
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, MsgRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
+        private void FaultyButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            MsgRichTextBox.Text = "Ελαττωματικό προιόν, ο πελάτης επιθυμεί πίστωση για μελλοντική αγορά";
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, MsgRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
+        private void DisplayVoucherButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            NoteRichTextBox.Text = "Ο πελάτης επέστρεψε το 1Χ " + PerTextBox.Text + " και έχει πίστωση " + PriceTextBox.Text + "€ (ΟΧΙ ΕΠΙΣΤΡΟΦΗ !!!)=" + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy"); ;
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NoteRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
+        private void DisplayReturnButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            NoteRichTextBox.Text = "Ο πελάτης επέστρεψε το 1Χ " + PerTextBox.Text + " και έχει επιστροφή χρημάτων " + PriceTextBox.Text + "€ =" + UserComboBox.Text + " " + DateTime.Now.ToString("dd/MM/yy"); ;
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NoteRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
+        private void VoucherSMSButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            string message = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ.";
+            if (FaultyCheckBox.Checked)
+            {
+                message += " ΕΧΕΤΕ ΠΙΣΤΩΣΗ " + PriceTextBox.Text + " ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+            }
+            else
+            {
+                message += " ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΕΙΝΑΙ ΠΡΟΒΛHMAΤΙΚΟ. ΕΧΕΤΕ ΠΙΣΤΩΣΗ " + PriceTextBox.Text + " ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+            }
+            SMSRichTextBox.Text = message;
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, SMSRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
+        private void MoneyReturnSMSButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            string message = "ΚΑΤΑΣΤΗΜΑ ΛΕΜΕΣΟΥ. ΤΕΧΝΙΚΟ ΤΜΗΜΑ.";
+            if (FaultyCheckBox.Checked)
+            {
+                message += " ΕΧΕΤΕ ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ " + PriceTextBox.Text + " ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+            }
+            else
+            {
+                message += " ΤΟ ΠΡΟΙΟΝ ΣΑΣ ΕΙΝΑΙ ΠΡΟΒΛHMAΤΙΚΟ. ΕΧΕΤΕ ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ " + PriceTextBox.Text + " ΕΥΡΩ. ΓΙΑ ΝΑ ΠΑΡΕΤΕ ΚΑΤΙ ΑΛΛΟ.";
+            }
+            SMSRichTextBox.Text = message; DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, SMSRichTextBox.Text);
+            Clipboard.SetDataObject(data);
+        }
+        private void PerTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string text = PerTextBox.Text;
+            text = text.Replace("\t", "");
+            text = text.Replace(" ", ""); // remove spaces
+            PerTextBox.Text = text;
+        }
+        private void PriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string text = PriceTextBox.Text;
+            text = text.Replace("\t", "");
+            text = text.Replace(" ", ""); // remove spaces
+            PriceTextBox.Text = text;
+        }
+        private void MsgCopyButton_Click(object sender, EventArgs e)
+        {
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, MsgRichTextBox.Text);
+            Clipboard.SetDataObject(data, true);
+        }
+        private void MsgDeleteButton_Click(object sender, EventArgs e)
+        {
+            MsgRichTextBox.Text = string.Empty;
+        }
+        private void NoteCopyButton_Click(object sender, EventArgs e)
+        {
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NoteRichTextBox.Text);
+            Clipboard.SetDataObject(data, true);
+        }
+        private void NoteDeleteButton_Click(object sender, EventArgs e)
+        {
+            NoteRichTextBox.Text = string.Empty;
+        }
+        private void SMSCopybutton_Click(object sender, EventArgs e)
+        {
+            DataObject data = new();
+            data.SetData(DataFormats.UnicodeText, NoteRichTextBox.Text);
+            Clipboard.SetDataObject(data, true);
+        }
+        private void SMSDeletebutton_Click(object sender, EventArgs e)
+        {
+            SMSRichTextBox.Text = string.Empty;
         }
     }
 }

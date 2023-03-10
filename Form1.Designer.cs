@@ -55,6 +55,7 @@
             OrderDateLabel = new Label();
             TodayLabel = new Label();
             NotesPage = new TabPage();
+            OnlineOrderButton = new Button();
             SameFromGRButton = new Button();
             SentToRepairΒutton = new Button();
             ReturnMoneyServiceButton = new Button();
@@ -70,15 +71,35 @@
             ManufacturerButton = new Button();
             LanguageLabel = new Label();
             LanguageComboBox = new ComboBox();
-            CallCenterTabPage = new TabPage();
-            CallLabel = new Label();
-            CallComboBox = new ComboBox();
-            OnlineOrderButton = new Button();
+            VoucherTabPage = new TabPage();
+            FaultyCheckBox = new CheckBox();
+            DisplayReturnButton = new Button();
+            SMSDeletebutton = new Button();
+            SMSCopybutton = new Button();
+            SMSRichTextBox = new RichTextBox();
+            MoneyReturnSMSButton = new Button();
+            VoucherSMSButton = new Button();
+            label1 = new Label();
+            NoteDeleteButton = new Button();
+            MsgDeleteButton = new Button();
+            NoteCopyButton = new Button();
+            MsgCopyButton = new Button();
+            NoteRichTextBox = new RichTextBox();
+            DisplayVoucherButton = new Button();
+            NoteLabel = new Label();
+            MsgRichTextBox = new RichTextBox();
+            FaultyButton = new Button();
+            WrongOrderButton = new Button();
+            MsgLabel = new Label();
+            PriceTextBox = new TextBox();
+            PerTextBox = new TextBox();
+            PriceLabel = new Label();
+            PerLabel = new Label();
             TabControl.SuspendLayout();
             CalendarTabPage.SuspendLayout();
             NotesPage.SuspendLayout();
             SMSTabPage.SuspendLayout();
-            CallCenterTabPage.SuspendLayout();
+            VoucherTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // CompleteButton
@@ -170,7 +191,7 @@
             TabControl.Controls.Add(CalendarTabPage);
             TabControl.Controls.Add(NotesPage);
             TabControl.Controls.Add(SMSTabPage);
-            TabControl.Controls.Add(CallCenterTabPage);
+            TabControl.Controls.Add(VoucherTabPage);
             TabControl.Dock = DockStyle.Fill;
             TabControl.Location = new Point(0, 0);
             TabControl.Name = "TabControl";
@@ -414,6 +435,17 @@
             NotesPage.TabIndex = 1;
             NotesPage.Text = "Σημειώσεις";
             // 
+            // OnlineOrderButton
+            // 
+            OnlineOrderButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            OnlineOrderButton.Location = new Point(162, 69);
+            OnlineOrderButton.Name = "OnlineOrderButton";
+            OnlineOrderButton.Size = new Size(150, 30);
+            OnlineOrderButton.TabIndex = 51;
+            OnlineOrderButton.Text = "Τηλεφωνική παραγγελία";
+            OnlineOrderButton.UseVisualStyleBackColor = true;
+            OnlineOrderButton.Click += OnlineOrderButton_Click;
+            // 
             // SameFromGRButton
             // 
             SameFromGRButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -585,47 +617,260 @@
             LanguageComboBox.Text = "Ελληνικά";
             LanguageComboBox.SelectedIndexChanged += LanguageComboBox_SelectedIndexChanged;
             // 
-            // CallCenterTabPage
+            // VoucherTabPage
             // 
-            CallCenterTabPage.BackColor = SystemColors.Control;
-            CallCenterTabPage.Controls.Add(CallLabel);
-            CallCenterTabPage.Controls.Add(CallComboBox);
-            CallCenterTabPage.Location = new Point(4, 24);
-            CallCenterTabPage.Name = "CallCenterTabPage";
-            CallCenterTabPage.Padding = new Padding(3);
-            CallCenterTabPage.Size = new Size(476, 259);
-            CallCenterTabPage.TabIndex = 3;
-            CallCenterTabPage.Text = "Call Center";
+            VoucherTabPage.BackColor = SystemColors.Control;
+            VoucherTabPage.Controls.Add(FaultyCheckBox);
+            VoucherTabPage.Controls.Add(DisplayReturnButton);
+            VoucherTabPage.Controls.Add(SMSDeletebutton);
+            VoucherTabPage.Controls.Add(SMSCopybutton);
+            VoucherTabPage.Controls.Add(SMSRichTextBox);
+            VoucherTabPage.Controls.Add(MoneyReturnSMSButton);
+            VoucherTabPage.Controls.Add(VoucherSMSButton);
+            VoucherTabPage.Controls.Add(label1);
+            VoucherTabPage.Controls.Add(NoteDeleteButton);
+            VoucherTabPage.Controls.Add(MsgDeleteButton);
+            VoucherTabPage.Controls.Add(NoteCopyButton);
+            VoucherTabPage.Controls.Add(MsgCopyButton);
+            VoucherTabPage.Controls.Add(NoteRichTextBox);
+            VoucherTabPage.Controls.Add(DisplayVoucherButton);
+            VoucherTabPage.Controls.Add(NoteLabel);
+            VoucherTabPage.Controls.Add(MsgRichTextBox);
+            VoucherTabPage.Controls.Add(FaultyButton);
+            VoucherTabPage.Controls.Add(WrongOrderButton);
+            VoucherTabPage.Controls.Add(MsgLabel);
+            VoucherTabPage.Controls.Add(PriceTextBox);
+            VoucherTabPage.Controls.Add(PerTextBox);
+            VoucherTabPage.Controls.Add(PriceLabel);
+            VoucherTabPage.Controls.Add(PerLabel);
+            VoucherTabPage.Location = new Point(4, 24);
+            VoucherTabPage.Name = "VoucherTabPage";
+            VoucherTabPage.Padding = new Padding(3);
+            VoucherTabPage.Size = new Size(476, 259);
+            VoucherTabPage.TabIndex = 3;
+            VoucherTabPage.Text = "Πιστωτικά";
             // 
-            // CallLabel
+            // FaultyCheckBox
             // 
-            CallLabel.AutoSize = true;
-            CallLabel.Location = new Point(15, 21);
-            CallLabel.Name = "CallLabel";
-            CallLabel.Size = new Size(135, 15);
-            CallLabel.TabIndex = 1;
-            CallLabel.Text = "Απαντήθηκε κλήση για :";
+            FaultyCheckBox.AutoSize = true;
+            FaultyCheckBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            FaultyCheckBox.Location = new Point(388, 8);
+            FaultyCheckBox.Name = "FaultyCheckBox";
+            FaultyCheckBox.Size = new Size(85, 19);
+            FaultyCheckBox.TabIndex = 24;
+            FaultyCheckBox.Text = "ΡΑΦΙ 2001";
+            FaultyCheckBox.UseVisualStyleBackColor = true;
             // 
-            // CallComboBox
+            // DisplayReturnButton
             // 
-            CallComboBox.FormattingEnabled = true;
-            CallComboBox.Items.AddRange(new object[] { "Ερώτηση κατάστασης παραγγελίας", "Ερώτηση αγοράς", "Ερώτηση πληρωμής", "Λάθος νούμερο", "Ερώτηση διαθεσιμότητας", "ΠΩΛΗΣΗ", "Ακύρωση παραγγελίας", "Ερώτηση ωραρίου λειτουργίας", "SERVICE" });
-            CallComboBox.Location = new Point(156, 18);
-            CallComboBox.Name = "CallComboBox";
-            CallComboBox.Size = new Size(312, 23);
-            CallComboBox.TabIndex = 0;
-            CallComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            DisplayReturnButton.Location = new Point(85, 141);
+            DisplayReturnButton.Name = "DisplayReturnButton";
+            DisplayReturnButton.Size = new Size(89, 31);
+            DisplayReturnButton.TabIndex = 22;
+            DisplayReturnButton.Text = "Επιστροφή";
+            DisplayReturnButton.UseVisualStyleBackColor = true;
+            DisplayReturnButton.Click += DisplayReturnButton_Click;
             // 
-            // OnlineOrderButton
+            // SMSDeletebutton
             // 
-            OnlineOrderButton.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            OnlineOrderButton.Location = new Point(162, 69);
-            OnlineOrderButton.Name = "OnlineOrderButton";
-            OnlineOrderButton.Size = new Size(150, 30);
-            OnlineOrderButton.TabIndex = 51;
-            OnlineOrderButton.Text = "Τηλεφωνική παραγγελία";
-            OnlineOrderButton.UseVisualStyleBackColor = true;
-            OnlineOrderButton.Click += OnlineOrderButton_Click;
+            SMSDeletebutton.BackColor = Color.FromArgb(255, 128, 128);
+            SMSDeletebutton.Location = new Point(186, 213);
+            SMSDeletebutton.Name = "SMSDeletebutton";
+            SMSDeletebutton.Size = new Size(55, 30);
+            SMSDeletebutton.TabIndex = 21;
+            SMSDeletebutton.Text = "Delete";
+            SMSDeletebutton.UseVisualStyleBackColor = false;
+            SMSDeletebutton.Click += SMSDeletebutton_Click;
+            // 
+            // SMSCopybutton
+            // 
+            SMSCopybutton.BackColor = Color.FromArgb(192, 255, 192);
+            SMSCopybutton.Location = new Point(186, 178);
+            SMSCopybutton.Name = "SMSCopybutton";
+            SMSCopybutton.Size = new Size(55, 30);
+            SMSCopybutton.TabIndex = 20;
+            SMSCopybutton.Text = "Copy";
+            SMSCopybutton.UseVisualStyleBackColor = false;
+            SMSCopybutton.Click += SMSCopybutton_Click;
+            // 
+            // SMSRichTextBox
+            // 
+            SMSRichTextBox.Location = new Point(247, 178);
+            SMSRichTextBox.Name = "SMSRichTextBox";
+            SMSRichTextBox.Size = new Size(226, 65);
+            SMSRichTextBox.TabIndex = 19;
+            SMSRichTextBox.Text = "";
+            // 
+            // MoneyReturnSMSButton
+            // 
+            MoneyReturnSMSButton.Location = new Point(78, 212);
+            MoneyReturnSMSButton.Name = "MoneyReturnSMSButton";
+            MoneyReturnSMSButton.Size = new Size(102, 30);
+            MoneyReturnSMSButton.TabIndex = 18;
+            MoneyReturnSMSButton.Text = "Επιστροφή";
+            MoneyReturnSMSButton.UseVisualStyleBackColor = true;
+            MoneyReturnSMSButton.Click += MoneyReturnSMSButton_Click;
+            // 
+            // VoucherSMSButton
+            // 
+            VoucherSMSButton.Location = new Point(78, 177);
+            VoucherSMSButton.Name = "VoucherSMSButton";
+            VoucherSMSButton.Size = new Size(102, 30);
+            VoucherSMSButton.TabIndex = 17;
+            VoucherSMSButton.Text = "Πίστωση";
+            VoucherSMSButton.UseVisualStyleBackColor = true;
+            VoucherSMSButton.Click += VoucherSMSButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(32, 204);
+            label1.Name = "label1";
+            label1.Size = new Size(36, 15);
+            label1.TabIndex = 16;
+            label1.Text = "SMS :";
+            // 
+            // NoteDeleteButton
+            // 
+            NoteDeleteButton.BackColor = Color.FromArgb(255, 128, 128);
+            NoteDeleteButton.Location = new Point(186, 140);
+            NoteDeleteButton.Name = "NoteDeleteButton";
+            NoteDeleteButton.Size = new Size(55, 33);
+            NoteDeleteButton.TabIndex = 15;
+            NoteDeleteButton.Text = "Delete";
+            NoteDeleteButton.UseVisualStyleBackColor = false;
+            NoteDeleteButton.Click += NoteDeleteButton_Click;
+            // 
+            // MsgDeleteButton
+            // 
+            MsgDeleteButton.BackColor = Color.FromArgb(255, 128, 128);
+            MsgDeleteButton.Location = new Point(186, 70);
+            MsgDeleteButton.Name = "MsgDeleteButton";
+            MsgDeleteButton.Size = new Size(55, 30);
+            MsgDeleteButton.TabIndex = 14;
+            MsgDeleteButton.Text = "Delete";
+            MsgDeleteButton.UseVisualStyleBackColor = false;
+            MsgDeleteButton.Click += MsgDeleteButton_Click;
+            // 
+            // NoteCopyButton
+            // 
+            NoteCopyButton.BackColor = Color.FromArgb(192, 255, 192);
+            NoteCopyButton.Location = new Point(186, 105);
+            NoteCopyButton.Name = "NoteCopyButton";
+            NoteCopyButton.Size = new Size(55, 30);
+            NoteCopyButton.TabIndex = 13;
+            NoteCopyButton.Text = "Copy";
+            NoteCopyButton.UseVisualStyleBackColor = false;
+            NoteCopyButton.Click += NoteCopyButton_Click;
+            // 
+            // MsgCopyButton
+            // 
+            MsgCopyButton.BackColor = Color.FromArgb(192, 255, 192);
+            MsgCopyButton.Location = new Point(186, 35);
+            MsgCopyButton.Name = "MsgCopyButton";
+            MsgCopyButton.Size = new Size(55, 30);
+            MsgCopyButton.TabIndex = 12;
+            MsgCopyButton.Text = "Copy";
+            MsgCopyButton.UseVisualStyleBackColor = false;
+            MsgCopyButton.Click += MsgCopyButton_Click;
+            // 
+            // NoteRichTextBox
+            // 
+            NoteRichTextBox.Location = new Point(247, 105);
+            NoteRichTextBox.Name = "NoteRichTextBox";
+            NoteRichTextBox.Size = new Size(226, 66);
+            NoteRichTextBox.TabIndex = 11;
+            NoteRichTextBox.Text = "";
+            // 
+            // DisplayVoucherButton
+            // 
+            DisplayVoucherButton.Location = new Point(85, 105);
+            DisplayVoucherButton.Name = "DisplayVoucherButton";
+            DisplayVoucherButton.Size = new Size(89, 31);
+            DisplayVoucherButton.TabIndex = 9;
+            DisplayVoucherButton.Text = "Πίστωση";
+            DisplayVoucherButton.UseVisualStyleBackColor = true;
+            DisplayVoucherButton.Click += DisplayVoucherButton_Click;
+            // 
+            // NoteLabel
+            // 
+            NoteLabel.AutoSize = true;
+            NoteLabel.Location = new Point(24, 133);
+            NoteLabel.Name = "NoteLabel";
+            NoteLabel.Size = new Size(44, 15);
+            NoteLabel.TabIndex = 8;
+            NoteLabel.Text = "Notes :";
+            // 
+            // MsgRichTextBox
+            // 
+            MsgRichTextBox.Location = new Point(247, 35);
+            MsgRichTextBox.Name = "MsgRichTextBox";
+            MsgRichTextBox.Size = new Size(226, 66);
+            MsgRichTextBox.TabIndex = 7;
+            MsgRichTextBox.Text = "";
+            // 
+            // FaultyButton
+            // 
+            FaultyButton.Location = new Point(78, 70);
+            FaultyButton.Name = "FaultyButton";
+            FaultyButton.Size = new Size(102, 30);
+            FaultyButton.TabIndex = 6;
+            FaultyButton.Text = "Ελαττωματικό";
+            FaultyButton.UseVisualStyleBackColor = true;
+            FaultyButton.Click += FaultyButton_Click;
+            // 
+            // WrongOrderButton
+            // 
+            WrongOrderButton.Location = new Point(78, 35);
+            WrongOrderButton.Name = "WrongOrderButton";
+            WrongOrderButton.Size = new Size(102, 30);
+            WrongOrderButton.TabIndex = 5;
+            WrongOrderButton.Text = "Λάθος αγορά";
+            WrongOrderButton.UseVisualStyleBackColor = true;
+            WrongOrderButton.Click += WrongOrderButton_Click;
+            // 
+            // MsgLabel
+            // 
+            MsgLabel.AutoSize = true;
+            MsgLabel.Location = new Point(10, 62);
+            MsgLabel.Name = "MsgLabel";
+            MsgLabel.Size = new Size(58, 15);
+            MsgLabel.TabIndex = 4;
+            MsgLabel.Text = "Μήνυμα :";
+            // 
+            // PriceTextBox
+            // 
+            PriceTextBox.Location = new Point(247, 6);
+            PriceTextBox.Name = "PriceTextBox";
+            PriceTextBox.Size = new Size(100, 23);
+            PriceTextBox.TabIndex = 3;
+            PriceTextBox.TextChanged += PriceTextBox_TextChanged;
+            // 
+            // PerTextBox
+            // 
+            PerTextBox.Location = new Point(80, 6);
+            PerTextBox.Name = "PerTextBox";
+            PerTextBox.Size = new Size(100, 23);
+            PerTextBox.TabIndex = 2;
+            PerTextBox.TextChanged += PerTextBox_TextChanged;
+            // 
+            // PriceLabel
+            // 
+            PriceLabel.AutoSize = true;
+            PriceLabel.Location = new Point(202, 10);
+            PriceLabel.Name = "PriceLabel";
+            PriceLabel.Size = new Size(36, 15);
+            PriceLabel.TabIndex = 1;
+            PriceLabel.Text = "Τιμή :";
+            // 
+            // PerLabel
+            // 
+            PerLabel.AutoSize = true;
+            PerLabel.Location = new Point(8, 10);
+            PerLabel.Name = "PerLabel";
+            PerLabel.Size = new Size(60, 15);
+            PerLabel.TabIndex = 0;
+            PerLabel.Text = "Κωδικός :";
             // 
             // Form1
             // 
@@ -651,8 +896,8 @@
             NotesPage.PerformLayout();
             SMSTabPage.ResumeLayout(false);
             SMSTabPage.PerformLayout();
-            CallCenterTabPage.ResumeLayout(false);
-            CallCenterTabPage.PerformLayout();
+            VoucherTabPage.ResumeLayout(false);
+            VoucherTabPage.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -698,9 +943,30 @@
         private Button SentToRepairΒutton;
         private Button ReturnMoneyServiceButton;
         private Button VoucherServiceButton;
-        private TabPage CallCenterTabPage;
-        private Label CallLabel;
-        private ComboBox CallComboBox;
+        private TabPage VoucherTabPage;
         private Button OnlineOrderButton;
+        private TextBox PriceTextBox;
+        private TextBox PerTextBox;
+        private Label PriceLabel;
+        private Label PerLabel;
+        private Button NoteDeleteButton;
+        private Button MsgDeleteButton;
+        private Button NoteCopyButton;
+        private Button MsgCopyButton;
+        private RichTextBox NoteRichTextBox;
+        private Button DisplayVoucherButton;
+        private Label NoteLabel;
+        private RichTextBox MsgRichTextBox;
+        private Button FaultyButton;
+        private Button WrongOrderButton;
+        private Label MsgLabel;
+        private Button SMSDeletebutton;
+        private Button SMSCopybutton;
+        private RichTextBox SMSRichTextBox;
+        private Button MoneyReturnSMSButton;
+        private Button VoucherSMSButton;
+        private Label label1;
+        private Button DisplayReturnButton;
+        private CheckBox FaultyCheckBox;
     }
 }
