@@ -479,7 +479,7 @@ namespace SMS
         private void SMSCopybutton_Click(object sender, EventArgs e)
         {
             DataObject data = new();
-            data.SetData(DataFormats.UnicodeText, NoteRichTextBox.Text);
+            data.SetData(DataFormats.UnicodeText, SMSRichTextBox.Text);
             Clipboard.SetDataObject(data, true);
         }
         private void SMSDeletebutton_Click(object sender, EventArgs e)
